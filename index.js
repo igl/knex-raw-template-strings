@@ -1,13 +1,17 @@
 'use strict'
 
 module.exports = function SQL (template) {
-    var args = Array.from(arguments).slice(1)
+    var args = Array.prototype.slice.call(arguments, 1)
     var sql = ''
     var values = []
+    var i = 0
+    var templateLength = template.length
+    var argsLength = args.length
 
-    for (var i = 0, stringsLength = template.length, argsLength = args.length; i < stringsLength; i++) {
+    for (i; i < templateLength; i++) {
         sql += template[i]
-        if (typeof args[i] === 'object' && args[i] !== null && args[i].raw) {
+
+        if (typeof args[i] === 'object' && args[i] !== null) {
             sql += args[i].value
         } else if (i < argsLength) {
             values.push(args[i])

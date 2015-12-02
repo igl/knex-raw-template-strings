@@ -1,6 +1,11 @@
 knex-raw-template-strings
 -------------------------
 
+# Installation
+
+    npm install --save knex-raw-template-strings
+
+
 # Usage
     // compiles:
     knex.raw(...SQL`select * from users where name = ${ 'Hans' };`)
